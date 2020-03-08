@@ -17,6 +17,8 @@
 #include <sys/mman.h>
 #include <sys/stat.h>
 
-int gestion_data();
+int gestion_data1(void *buf);
+int gestion_data2(void *buf);
+char check_all_symbols(Elf64_Sym sym, Elf64_Shdr *shdr);
 
 #endif /* !NM_H_ */

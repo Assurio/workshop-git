@@ -33,6 +33,7 @@ void gestion_header(char *file, Elf64_Ehdr *elf)
 {
         printf("%s:\tfile format elf64-x86-64\n", file);
         printf("architecture: %s, flags 0x%08x:\n%s\n",
-        elf->e_machine == EM_X86_64 ? "i386:x86-64" : "i386", check_type(elf) ,check_flag(elf));
+        elf->e_machine == EM_X86_64 ? "i386:x86-64" : "i386", check_type(elf),
+        check_flag(elf));
         printf("start address 0x%016lx\n", elf->e_entry);
 }

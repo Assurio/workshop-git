@@ -9,15 +9,17 @@
 
 int gestion(char *file, int fd, void *buf)
 {
-    Elf64_Ehdr *elf;
+    Elf64_Ehdr *ehdr;
         if (buf != NULL) {
-                elf = buf;
-                if (elf->e_ident[0] == 0x7F && elf->e_ident[1] == 'E' &&
-                elf->e_ident[2] == 'L' && elf->e_ident[3] == 'F') {
-                    gestion_header(file, elf);
-                    // gestion_data(file);
-                } else
+                ehdr = buf;
+                if (ehdr->e_ident[0] == 0x7F && ehdr->e_ident[1] == 'E' &&
+                ehdr->e_ident[2] == 'L' && ehdr->e_ident[3] == 'F') {
+                    gestion_header(file, ehdr);
+                    gestion_data(ehdr, buf);
+                } else {
+                    fprintf(stderr, "objdump: %s: file format not recognized\n", file);
                     exit (84);
+                }
         } else
             perror("mmap");
         close(fd);
@@ -36,7 +38,7 @@ int elf(char *file)
         gestion(file, fd, buf);
     }
     else {
-        printf("objdump: \'a.out\': No such file\n");
+        fprintf(stderr, "objdump: '%s': No such file\n", file);
         exit (84);
     }
     return 0;

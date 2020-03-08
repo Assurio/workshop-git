@@ -19,6 +19,9 @@
 #include <sys/stat.h>
 
 void gestion_header(char *file, Elf64_Ehdr *elf);
-int gestion_data(char *file, Elf64_Ehdr *elf);
+int gestion_data(Elf64_Ehdr *elf, void *buf);
+int gestion(char *file, int fd, void *buf);
+void print_ascii(unsigned char* buf, int const size);
+void print_hexa(unsigned char* buf, int const size);
 
 #endif /* !OBJDUMP_H_ */

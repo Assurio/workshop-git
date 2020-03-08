@@ -5,9 +5,9 @@
 ## My Makefile
 ##
 
-SRC	=	my_nm.c		\
-		data.c		\
-		symbol.c	\
+SRC	=	my_nm.c			\
+		data_64.c		\
+		symbol_64.c		\
 
 OBJ	=	$(SRC:.c=.o)
 

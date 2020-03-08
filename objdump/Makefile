@@ -8,6 +8,7 @@
 SRC	=	my_objdump.c	\
 		header.c		\
 		data.c			\
+		gestion.c		\
 
 OBJ	=	$(SRC:.c=.o)
 
