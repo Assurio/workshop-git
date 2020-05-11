@@ -1,0 +1,21 @@
+name: c project
+
+on:
+  push:
+    branches: master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: make fclean
+        run: make fclean
+      - name: build project
+        run: make
+  check-coding-style:
+    runs-on: ubutnu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: check coding style
+        uses: jidicula/clang-format-action@master
