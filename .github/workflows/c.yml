@@ -14,6 +14,7 @@ jobs:
       - name: build project
         run: make
   check-coding-style:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -30,6 +31,6 @@ jobs:
           sudo apt install criterion-dev gcovr
       - uses: actions/checkout@v2
       - name: compile tests
-        run: make test_run
+        run: make tests_run
       - name: run tests
         run: ./unit_tests
